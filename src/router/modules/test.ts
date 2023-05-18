@@ -6,7 +6,7 @@ export const userRouter: Array<RouteRecordRaw> = [
     name: 'test',
     meta: {
       title: '测试',
-      keepAlive: false,
+      keepAlive: true,
     },
     component: () => import('@/pages/test/index.vue'),
   },

@@ -2,9 +2,9 @@ import type { Itest } from '@/types/test'
 import request from '@/utils/request'
 
 /**
- * @param data
+ * @param params
  * @returns Promise
  */
-export const test = (data: Itest) => {
-  return request.get('./test', data)
+export function test(params: Itest) {
+  return request.get('./test', params)
 }

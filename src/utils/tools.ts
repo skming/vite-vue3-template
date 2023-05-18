@@ -1,7 +1,7 @@
 type Func = (...args: any[]) => any
 
 /** 防抖 */
-export const debounce = (fn: Func, time: number) => {
+export function debounce(fn: Func, time: number) {
   let timer: null | ReturnType<typeof setTimeout> = null
   return (...args: any) => {
     if (timer) {
@@ -17,7 +17,7 @@ export const debounce = (fn: Func, time: number) => {
 }
 
 /** 节流 */
-export const throttle = (fn: Func, time: number) => {
+export function throttle(fn: Func, time: number) {
   let flag = true
   let timer: null | ReturnType<typeof setTimeout> = null
   return (...args: any) => {

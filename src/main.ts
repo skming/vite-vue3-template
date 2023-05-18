@@ -8,7 +8,7 @@ import { createApp } from 'vue'
 import VConsole from 'vconsole'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import { store } from './store'
 
 if (import.meta.env.VITE_ENV !== 'production') {
   const vConsole = new VConsole()
