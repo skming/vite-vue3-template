@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { commonStore } from './store/modules/common'
+const router = useRouter()
 
-const { cachesList } = commonStore()
+const allRoutes = router.getRoutes()
+const keepAliveRouteNames = computed(() => {
+  return allRoutes.filter(route => route.meta?.keepAlive).map(route => route.name)
+})
 </script>
 
 <template>
   <RouterView v-slot="{ Component }">
-    <KeepAlive :includes="cachesList">
+    <KeepAlive :includes="keepAliveRouteNames">
       <component :is="Component" />
     </KeepAlive>
   </RouterView>

@@ -1,8 +1,14 @@
 // 引入全局样式
 import '@unocss/reset/tailwind.css'
+import 'virtual:uno.css'
+
 import '@/styles/index.scss'
-import 'vant/lib/index.css'
-import 'uno.css'
+
+// 使用unplugin-vue-components导致部分组件样式没有正常引入 https://github.com/youzan/vant/issues/10709
+import 'vant/es/toast/style'
+import 'vant/es/dialog/style'
+import 'vant/es/notify/style'
+import 'vant/es/image-preview/style'
 
 import { createApp } from 'vue'
 import VConsole from 'vconsole'

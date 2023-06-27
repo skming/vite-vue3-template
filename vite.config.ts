@@ -1,4 +1,4 @@
-import path from 'node:path'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
@@ -32,15 +32,15 @@ export default defineConfig({
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
-        'src/store',
+        // 'src/store',
       ],
       vueTemplate: true,
     }),
   ],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src/'),
-    },
+    alias: [
+      { find: '@', replacement: `${resolve(__dirname, 'src/')}` },
+    ],
   },
   server: {
     // 服务器主机名

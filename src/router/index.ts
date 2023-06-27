@@ -1,6 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHistory } from 'vue-router'
-import { commonStore } from '@/store/modules/common'
 
 // 导入所有router
 const metaRouters: any = import.meta.glob('./modules/*.ts', { eager: true })
@@ -29,7 +28,6 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   if (typeof (to.meta?.title) === 'string')
     document.title = to.meta?.title
-  commonStore().addCachesList(to) // 路由缓存
 })
 
 export default router
