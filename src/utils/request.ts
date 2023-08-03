@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import { showToast } from 'vant'
 
-interface Result<T = any> {
+interface AxiosResult<T = any> {
   code: number
   success: boolean
   message: string
@@ -13,7 +13,6 @@ interface Result<T = any> {
 export class Request {
   // axios 实例
   instance: AxiosInstance
-  // 基础配置，url和超时时间
   baseConfig: AxiosRequestConfig = {
     // 默认请求地址，可在 .env.** 文件中修改
     baseURL: import.meta.env.VITE_BASE_URL,
@@ -109,7 +108,7 @@ export class Request {
     url: string,
     params?: any,
     config?: AxiosRequestConfig,
-  ): Promise<Result<T>> {
+  ): Promise<AxiosResult<T>> {
     return this.instance.get(url, { params, ...config })
   }
 
@@ -117,7 +116,7 @@ export class Request {
     url: string,
     data?: any,
     config?: AxiosRequestConfig,
-  ): Promise<Result<T>> {
+  ): Promise<AxiosResult<T>> {
     return this.instance.post(url, data, config)
   }
 
@@ -125,14 +124,14 @@ export class Request {
     url: string,
     data?: any,
     config?: AxiosRequestConfig,
-  ): Promise<Result<T>> {
+  ): Promise<AxiosResult<T>> {
     return this.instance.put(url, data, config)
   }
 
   public delete<T = any>(
     url: string,
     config?: AxiosRequestConfig,
-  ): Promise<Result<T>> {
+  ): Promise<AxiosResult<T>> {
     return this.instance.delete(url, config)
   }
 
