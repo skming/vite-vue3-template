@@ -1,4 +1,4 @@
-import type { Itest } from '@/types/test'
+import type { Itest } from '@/api/type'
 import request from '@/utils/request'
 
 /**
