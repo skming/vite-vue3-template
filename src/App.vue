@@ -8,9 +8,9 @@ const keepAliveRouteNames = computed(() => {
 </script>
 
 <template>
-  <RouterView v-slot="{ Component }">
+  <RouterView v-slot="{ Component, route }">
     <KeepAlive :include="keepAliveRouteNames">
-      <component :is="Component" />
+      <component :is="Component" :key="route.fullPath" />
     </KeepAlive>
   </RouterView>
 </template>
