@@ -25,7 +25,7 @@ const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to, _from) => {
   if (typeof (to.meta?.title) === 'string')
     document.title = to.meta?.title
 })

@@ -135,10 +135,11 @@ export class Request {
     return this.instance.delete(url, config)
   }
 
-  public download(url: string,
+  public download<T = BlobPart>(
+    url: string,
     data?: any,
     config?: AxiosRequestConfig,
-  ): Promise<BlobPart> {
+  ): Promise<T> {
     return this.instance.post(url, data, { ...config, responseType: 'blob' })
   }
 }

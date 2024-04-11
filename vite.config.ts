@@ -63,6 +63,7 @@ export default defineConfig({
   },
   esbuild: {
     pure: ['console.log'],
+    drop: ['console'],
   },
   css: {
     preprocessorOptions: {

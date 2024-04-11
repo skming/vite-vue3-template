@@ -17,6 +17,7 @@ import router from './router'
 import { store } from './store'
 
 if (import.meta.env.VITE_ENV !== 'production') {
+  // eslint-disable-next-line unused-imports/no-unused-vars
   const vConsole = new VConsole()
 }
 

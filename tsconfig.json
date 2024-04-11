@@ -1,26 +1,27 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
     "target": "ESNext",
+    "jsx": "preserve",
+    "lib": ["ESNext", "DOM"],
     "useDefineForClassFields": true,
+    "baseUrl": "./",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true,
-    "noEmit": true,
     "types": [
       "node",
       "vite/client"
     ],
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
+  "references": [{ "path": "./tsconfig.node.json" }],
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
@@ -29,6 +30,5 @@
   ],
   "exclude": [
     "dist"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  ]
 }
