@@ -27,7 +27,7 @@ const router = createRouter({
 
 router.beforeEach((to, _from) => {
   if (typeof (to.meta?.title) === 'string')
-    document.title = to.meta?.title
+    useTitle(to.meta?.title)
 })
 
 export default router

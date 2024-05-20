@@ -29,6 +29,8 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
+        '@vueuse/core',
+        'pinia',
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
@@ -60,6 +62,16 @@ export default defineConfig({
       //   rewrite: path => path.replace(/^\/api/, ''),
       // },
     },
+  },
+  optimizeDeps: {
+    include: [
+      'vue',
+      'vue-router',
+      '@vueuse/core',
+      'dayjs',
+      'dayjs/plugin/localizedFormat',
+      'lodash-es',
+    ],
   },
   esbuild: {
     pure: ['console.log'],
