@@ -1,14 +1,21 @@
 import { defineStore } from 'pinia'
 
-interface PState {
+export interface PState {
   token: string
+  theme: 'light' | 'dark'
 }
 
-export const commonStore = defineStore({
-  id: 'common',
+export const commonStore = defineStore('common', {
   state: (): PState => ({
     token: '',
+    theme: 'light', // light | dark
   }),
-  getters: {},
-  actions: {},
+  getters: {
+    getTheme: state => state.theme,
+  },
+  actions: {
+    setTheme(theme: 'light' | 'dark') {
+      this.theme = theme
+    },
+  },
 })

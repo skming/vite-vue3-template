@@ -1,7 +1,10 @@
 import { defineStore } from 'pinia'
 
-export const testStore = defineStore({
-  id: 'test',
+export interface TState {
+  name: string
+}
+
+export const testStore = defineStore('test', {
   state: () => ({
     name: 'test',
   }),

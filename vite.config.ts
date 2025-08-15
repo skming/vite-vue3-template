@@ -1,12 +1,13 @@
 import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
+import { VantResolver } from '@vant/auto-import-resolver'
 import vue from '@vitejs/plugin-vue'
-import Components from 'unplugin-vue-components/vite'
-import { VantResolver } from 'unplugin-vue-components/resolvers'
-import AutoImport from 'unplugin-auto-import/vite'
-import Unocss from 'unocss/vite'
-import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
 import dayjs from 'dayjs'
+import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
+import Unocss from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
+import pkg from './package.json'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
     }),
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
+      resolvers: [VantResolver()],
       imports: [
         'vue',
         'vue-router',
@@ -70,7 +72,7 @@ export default defineConfig({
       '@vueuse/core',
       'dayjs',
       'dayjs/plugin/localizedFormat',
-      'lodash-es',
+      'es-toolkit',
     ],
   },
   esbuild: {
@@ -82,8 +84,8 @@ export default defineConfig({
       scss: {
         charset: false, // 避免出现: build时的 @charset 必须在第一行的警告
         additionalData: `
-          @import "@/styles/mixin.scss";
-          @import "@/styles/variables.scss";
+          @use "@/styles/mixin.scss" as *;
+          @use "@/styles/variables.scss" as *;
         `,
       },
     },
@@ -112,6 +114,7 @@ export default defineConfig({
     },
   },
   define: {
-    __BUILD_TIME__: JSON.stringify(dayjs().format('YYYY/MM/DD HH:mm')),
+    __APP_BUILD_TIME__: JSON.stringify(dayjs().format('YYYY-MM-DD HH:mm:ss')),
+    __APP_VERSION__: JSON.stringify(pkg.version),
   },
 })

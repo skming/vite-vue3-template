@@ -1,6 +1,10 @@
 type Func = (...args: any[]) => any
 
-/** 防抖 */
+/**
+ * @description 防抖
+ * @param fn 回调函数
+ * @param time 时间
+ */
 export function debounce(fn: Func, time: number) {
   let timer: null | ReturnType<typeof setTimeout> = null
   return (...args: any) => {
@@ -16,7 +20,11 @@ export function debounce(fn: Func, time: number) {
   }
 }
 
-/** 节流 */
+/**
+ * @description 节流
+ * @param fn 回调函数
+ * @param time 时间
+ */
 export function throttle(fn: Func, time: number) {
   let flag = true
   let timer: null | ReturnType<typeof setTimeout> = null

@@ -6,7 +6,7 @@
     "useDefineForClassFields": true,
     "baseUrl": "./",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "paths": {
       "@/*": ["src/*"]
     },
@@ -26,7 +26,10 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "src/auto-imports.d.ts",
+    "src/components.d.ts",
+    "src/store.d.ts"
   ],
   "exclude": [
     "dist"

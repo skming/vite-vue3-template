@@ -1,5 +1,5 @@
-import axios from 'axios'
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
+import axios from 'axios'
 import { showToast } from 'vant'
 
 interface AxiosResult<T = any> {
@@ -50,47 +50,30 @@ export class Request {
       },
       (error: AxiosError) => {
         // 这里用来处理http常见错误，进行全局提示
-        let message = ''
-        const { response } = error
-        switch (response?.status) {
-          case 400:
-            message = '请求错误(400)'
-            break
-          case 401:
-            message = '未授权，请重新登录(401)'
-            // 这里可以做清空storage并跳转到登录页的操作
-            break
-          case 403:
-            message = '拒绝访问(403)'
-            break
-          case 404:
-            message = '请求出错(404)'
-            break
-          case 408:
-            message = '请求超时(408)'
-            break
-          case 500:
-            message = '服务器错误(500)'
-            break
-          case 501:
-            message = '服务未实现(501)'
-            break
-          case 502:
-            message = '网络错误(502)'
-            break
-          case 503:
-            message = '服务不可用(503)'
-            break
-          case 504:
-            message = '网络超时(504)'
-            break
-          case 505:
-            message = 'HTTP版本不受支持(505)'
-            break
-          default:
-            message = `连接出错(${response?.status})!`
+        const status = error.response?.status
+        let message = error.message
+        const errorMessages: Record<number, string> = {
+          400: '请求错误(400)',
+          401: '未授权，请重新登录(401)',
+          403: '拒绝访问(403)',
+          404: '请求资源不存在(404)',
+          408: '请求超时(408)',
+          500: '服务器错误(500)',
+          501: '服务未实现(501)',
+          502: '网络错误(502)',
+          503: '服务不可用(503)',
+          504: '网关超时(504)',
+          505: 'HTTP版本不受支持(505)',
         }
+
+        message = errorMessages[status as number] || `连接出错(${status})!`
+
         showToast(message)
+
+        if (status === 401) {
+          // 清空storage并跳转到登录页
+          localStorage.clear()
+        }
         // 这里是AxiosError类型，所以一般我们只reject我们需要的响应即可
         return Promise.reject(error)
       },

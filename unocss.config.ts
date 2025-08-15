@@ -3,8 +3,8 @@ import {
   presetAttributify,
   presetIcons,
   presetTypography,
-  presetUno,
   presetWebFonts,
+  presetWind4,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -12,7 +12,12 @@ import {
 export default defineConfig({
   shortcuts: [],
   presets: [
-    presetUno(),
+    presetWind4({
+      preflights: {
+        reset: true,
+        theme: true,
+      },
+    }),
     presetAttributify(),
     presetIcons({
       scale: 1.2,
