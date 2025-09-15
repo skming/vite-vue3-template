@@ -9,8 +9,9 @@ import 'virtual:uno.css'
 import '@/styles/index.scss'
 
 if (import.meta.env.VITE_ENV !== 'production') {
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  const vConsole = new VConsole()
+  import('eruda').then((eruda) => {
+    eruda.default.init()
+  })
 }
 
 const app = createApp(App)
