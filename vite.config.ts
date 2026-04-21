@@ -1,4 +1,4 @@
-import { resolve } from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
 import { VantResolver } from '@vant/auto-import-resolver'
 import vue from '@vitejs/plugin-vue'
 import dayjs from 'dayjs'
@@ -9,23 +9,16 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import pkg from './package.json'
 
-// https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     vue(),
-    // https://github.com/antfu/unocss
-    // see unocss.config.ts for config
     Unocss(),
-    // https://github.com/antfu/unplugin-vue-components
     Components({
-      // allow auto load markdown components under `./src/components/`
       resolvers: [VantResolver()],
       extensions: ['vue', 'md'],
-      // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/components.d.ts',
     }),
-    // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       resolvers: [VantResolver()],
       imports: [
@@ -43,21 +36,18 @@ export default defineConfig({
   ],
   resolve: {
     alias: [
-      { find: '@', replacement: `${resolve(__dirname, 'src/')}` },
+      {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+      },
     ],
   },
   server: {
-    // 服务器主机名
     host: true,
-    // 端口号
     port: 3030,
-    // 设为 true 时若端口已被占用则会直接退出，而不是尝试下一个可用端口
     strictPort: false,
-    // 服务器启动时自动在浏览器中打开应用程序,当此值为字符串时，会被用作 URL 的路径名
     open: false,
-    // 自定义代理规则
     proxy: {
-      // 选项写法
       // '/api': {
       //   target: 'http://jsonplaceholder.typicode.com',
       //   changeOrigin: true,
@@ -73,16 +63,15 @@ export default defineConfig({
       'dayjs',
       'dayjs/plugin/localizedFormat',
       'es-toolkit',
+      'vant',
     ],
   },
-  esbuild: {
-    pure: ['console.log'],
-    drop: ['console'],
+  build: {
+    minify: mode === 'production' ? 'oxc' : false,
   },
   css: {
     preprocessorOptions: {
       scss: {
-        charset: false, // 避免出现: build时的 @charset 必须在第一行的警告
         additionalData: `
           @use "@/styles/mixin.scss" as *;
           @use "@/styles/variables.scss" as *;
@@ -117,4 +106,4 @@ export default defineConfig({
     __APP_BUILD_TIME__: JSON.stringify(dayjs().format('YYYY-MM-DD HH:mm:ss')),
     __APP_VERSION__: JSON.stringify(pkg.version),
   },
-})
+}))

@@ -12,13 +12,30 @@ dist
 dist-ssr
 *.local
 
+# Vite 构建缓存
+.vite/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# AI 工具配置（按需取消注释）
+# .agents/
+.claude/
+.windsurf/
+.agent/
+.junie/
+.kiro/
+.trae/
+.gemini/

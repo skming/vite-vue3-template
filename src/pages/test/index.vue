@@ -8,9 +8,9 @@ const test = testStore()
   <div class="text-28px text-green dark:text-green-500">
     测试页面<a class="text">{{ test.fullName }}</a>
   </div>
-  <VanButton @click="test.updateState(new Date().getTime().toString())">
+  <van-button @click="test.updateState(new Date().getTime().toString())">
     更新
-  </VanButton>
+  </van-button>
 </template>
 
 <style lang="scss" scoped>

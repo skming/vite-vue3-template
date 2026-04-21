@@ -2,13 +2,12 @@
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
-    "baseUrl": "./",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "types": [
@@ -26,10 +25,7 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/auto-imports.d.ts",
-    "src/components.d.ts",
-    "src/store.d.ts"
+    "src/**/*.vue"
   ],
   "exclude": [
     "dist"
