@@ -1,3 +1,5 @@
+import 'axios'
+
 declare module 'axios' {
   interface AxiosRequestConfig {
     repeatCancel?: boolean // 是否开启重复请求取消
