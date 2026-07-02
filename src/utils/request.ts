@@ -121,7 +121,7 @@ class Request {
         }
 
         const token = localStorage.getItem('token')
-        if (token && config.headers) {
+        if (token) {
           config.headers.Authorization = `Bearer ${token}`
         }
         return config
@@ -137,6 +137,10 @@ class Request {
         this.removePending(config)
         if (config.loading)
           closeToast()
+
+        // 返回非 json 格式的原始数据
+        if (config.responseType && config.responseType !== 'json')
+          return data
 
         // 业务逻辑错误拦截
         // 根据后端约定，如果 code 不是 200 或者 success 为 false，则视为业务异常

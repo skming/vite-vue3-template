@@ -6,5 +6,5 @@ import request from '@/utils/request'
  * @returns Promise
  */
 export function test(params: Itest) {
-  return request.get('./test', params)
+  return request.get('/test', params)
 }

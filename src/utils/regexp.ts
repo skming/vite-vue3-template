@@ -30,5 +30,5 @@ export function isIDNumber(e: string) {
  * @description 银行卡号 16-19位
  */
 export function isBankCardNumber(e: string) {
-  return /^(?:\d{16}|\d{17}|\d{18})$/.test(e)
+  return /^(?:\d{16}|\d{17}|\d{18}|\d{19})$/.test(e)
 }

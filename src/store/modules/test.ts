@@ -12,7 +12,7 @@ export const testStore = defineStore('test', {
     fullName: state => `${state.name}测试`,
   },
   actions: {
-    updateState(data: any) {
+    updateState(data: string) {
       this.name = data
     },
   },
