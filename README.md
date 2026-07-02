@@ -1,12 +1,12 @@
 # Vite 8 + Vue 3 + TypeScript 6 Template
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Vite-8.0.9-646CFF?logo=vite&logoColor=white" alt="Vite">
-  <img src="https://img.shields.io/badge/Vue-3.5.32-4FC08D?logo=vuedotjs&logoColor=white" alt="Vue">
+  <img src="https://img.shields.io/badge/Vite-8.1.2-646CFF?logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/Vue-3.5.39-4FC08D?logo=vuedotjs&logoColor=white" alt="Vue">
   <img src="https://img.shields.io/badge/TypeScript-6.0.3-3178C6?logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/UnoCSS-0.66.8-grey?logo=unocss&logoColor=white" alt="UnoCSS">
-  <img src="https://img.shields.io/badge/ESLint-10.2.1-4B32C3?logo=eslint&logoColor=white" alt="ESLint">
-  <img src="https://img.shields.io/badge/pnpm-10.30.3-F69220?logo=pnpm&logoColor=white" alt="pnpm">
+  <img src="https://img.shields.io/badge/UnoCSS-66.7.4-grey?logo=unocss&logoColor=white" alt="UnoCSS">
+  <img src="https://img.shields.io/badge/ESLint-10.6.0-4B32C3?logo=eslint&logoColor=white" alt="ESLint">
+  <img src="https://img.shields.io/badge/pnpm-11.1.3-F69220?logo=pnpm&logoColor=white" alt="pnpm">
 </p>
 
 ## 特性 (Features)
@@ -25,7 +25,7 @@
 *   **构建**: [Vite 8](https://vite.dev/) + [Rolldown](https://rolldown.rs/)
 *   **类型**: [TypeScript 6](https://www.typescriptlang.org/)
 *   **样式**: [UnoCSS](https://unocss.dev/), [Sass](https://sass-lang.com/), [PostCSS](https://postcss.org/)
-*   **路由**: [Vue Router 4](https://router.vuejs.org/)
+*   **路由**: [Vue Router 5](https://router.vuejs.org/)
 *   **状态**: [Pinia 3](https://pinia.vuejs.org/)
 *   **组件**: [Vant 4](https://vant-ui.github.io/vant/)
 *   **工具**: [VueUse](https://vueuse.org/), [Axios](https://axios-http.com/), [Dayjs](https://day.js.org/)
@@ -34,7 +34,7 @@
 
 ### 环境要求 (Prerequisites)
 *   [Node.js](https://nodejs.org/) v22+
-*   [pnpm](https://pnpm.io/) v10+
+*   [pnpm](https://pnpm.io/) v11+
 
 ### 安装与启动 (Install & Dev)
 
@@ -65,11 +65,12 @@ pnpm dev
 │   ├── api/          # 接口请求
 │   ├── assets/       # 静态资源
 │   ├── components/   # 全局公共组件
-│   ├── hooks/        # 组合式函数 (Composables)
+│   ├── config/       # 全局配置
 │   ├── pages/        # 页面视图
 │   ├── router/       # 路由配置
 │   ├── store/        # 状态管理 (Pinia)
 │   ├── styles/       # 全局样式
+│   ├── typings/      # 全局类型声明 / 模块增强
 │   ├── utils/        # 工具函数
 │   ├── App.vue       # 根组件
 │   └── main.ts       # 入口文件
