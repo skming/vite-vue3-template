@@ -1,9 +1,6 @@
 allowBuilds:
   '@parcel/watcher': true
   simple-git-hooks: true
-minimumReleaseAgeExclude:
-  - '@vue/language-core@3.3.0'
-  - vue-tsc@3.3.0
 shellEmulator: true
 
 trustPolicy: no-downgrade
